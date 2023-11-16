@@ -14,20 +14,39 @@ const createReleaseService = ({ strapi }: { strapi: LoadedStrapi }) => ({
 
     return release;
   },
-  async findMany(query: Record<string, unknown>) {
+  async findMany(query?: Record<string, unknown>) {
     const { results, pagination } = await strapi.entityService.findPage(RELEASE_MODEL_UID, {
-      ...query,
+      // Default query
       populate: {
         actions: {
           // @ts-expect-error TS error on populate, is not considering count
           count: true,
         },
       },
+      // Query request, overrides default
+      ...query,
     });
 
     return {
       data: results,
       pagination,
+    };
+  },
+  async findOne(id: number, query?: Record<string, unknown>) {
+    const release = await strapi.entityService.findOne(RELEASE_MODEL_UID, id, {
+      // Default query
+      populate: {
+        actions: {
+          // @ts-expect-error TS error on populate, is not considering count
+          count: true,
+        },
+      },
+      // Query request, overrides default
+      ...query,
+    });
+
+    return {
+      data: release,
     };
   },
   async createAction(
