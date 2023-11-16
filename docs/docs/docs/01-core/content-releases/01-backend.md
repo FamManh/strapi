@@ -56,6 +56,11 @@ packages/core/content-releases/server/src/routes/release.ts
   }
   ```
 
+**Get a single release**
+
+- method: `GET`
+- endpoint: `/content-releases/:id`
+
 **Create a release**:
 
 - method: `POST`
