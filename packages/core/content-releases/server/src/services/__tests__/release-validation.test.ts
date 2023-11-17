@@ -1,4 +1,4 @@
-import { ReleaseActionCreateArgs } from '../../../../shared/types';
+import type { CreateReleaseAction } from '../../../../shared/contracts/release-action';
 import createReleaseValidationService from '../validation';
 
 const baseStrapiMock = {
@@ -10,13 +10,13 @@ const baseStrapiMock = {
   contentType: jest.fn(),
 };
 
-describe('releaseValidation service', () => {
+describe('Release Validation service', () => {
   describe('validateEntryContentType', () => {
     it('throws an error if the content type does not exist', () => {
       // @ts-expect-error Ignore missing properties
       const releaseValidationService = createReleaseValidationService({ strapi: baseStrapiMock });
 
-      const mockReleaseAction: ReleaseActionCreateArgs = {
+      const mockReleaseAction: CreateReleaseAction.Request['body'] = {
         releaseId: 1,
         entry: {
           id: 1,
@@ -40,7 +40,7 @@ describe('releaseValidation service', () => {
       // @ts-expect-error Ignore missing properties
       const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
 
-      const mockReleaseAction: ReleaseActionCreateArgs = {
+      const mockReleaseAction: CreateReleaseAction.Request['body'] = {
         releaseId: 1,
         entry: {
           id: 1,
@@ -71,7 +71,7 @@ describe('releaseValidation service', () => {
       // @ts-expect-error Ignore missing properties
       const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
 
-      const mockReleaseAction: ReleaseActionCreateArgs = {
+      const mockReleaseAction: CreateReleaseAction.Request['body'] = {
         releaseId: 1,
         entry: {
           id: 1,
@@ -109,7 +109,7 @@ describe('releaseValidation service', () => {
       // @ts-expect-error Ignore missing properties
       const releaseValidationService = createReleaseValidationService({ strapi: strapiMock });
 
-      const mockReleaseAction: ReleaseActionCreateArgs = {
+      const mockReleaseAction: CreateReleaseAction.Request['body'] = {
         releaseId: 1,
         entry: {
           id: 1,

@@ -1,10 +1,11 @@
 import { errors } from '@strapi/utils';
 import { LoadedStrapi } from '@strapi/types';
-import { Release, ReleaseActionCreateArgs } from '../../../shared/types';
+import type { Release } from '../../../shared/contracts/release';
+import type { CreateReleaseAction } from '../../../shared/contracts/release-action';
 import { RELEASE_MODEL_UID } from '../constants';
 
 const createReleaseValidationService = ({ strapi }: { strapi: LoadedStrapi }) => ({
-  async validateUniqueEntry(releaseActionArgs: ReleaseActionCreateArgs) {
+  async validateUniqueEntry(releaseActionArgs: CreateReleaseAction.Request['body']) {
     /**
      * Asserting the type, otherwise TS complains: 'release.actions' is of type 'unknown', even though the types come through for non-populated fields...
      * Possibly related to the comment on GetValues: https://github.com/strapi/strapi/blob/main/packages/core/types/src/modules/entity-service/result.ts
@@ -33,7 +34,7 @@ const createReleaseValidationService = ({ strapi }: { strapi: LoadedStrapi }) =>
       );
     }
   },
-  validateEntryContentType(releaseActionArgs: ReleaseActionCreateArgs) {
+  validateEntryContentType(releaseActionArgs: CreateReleaseAction.Request['body']) {
     const contentType = strapi.contentType(releaseActionArgs.entry.contentType);
 
     if (!contentType) {

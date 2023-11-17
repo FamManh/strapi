@@ -1,11 +1,11 @@
 import type Koa from 'koa';
 import { validateReleaseActionCreateSchema } from './validation/release-action';
-import { ReleaseActionCreateArgs } from '../../../shared/types';
+import { CreateReleaseAction } from '../../../shared/contracts/release-action';
 import { getService } from '../utils';
 
 const releaseActionController = {
   async create(ctx: Koa.Context) {
-    const releaseActionArgs: ReleaseActionCreateArgs = ctx.request.body;
+    const releaseActionArgs: CreateReleaseAction.Request['body'] = ctx.request.body;
 
     await validateReleaseActionCreateSchema(releaseActionArgs);
 

@@ -1,8 +1,12 @@
 import type Koa from 'koa';
+import { errors } from '@strapi/utils';
 import { RELEASE_MODEL_UID } from '../constants';
 import { validateCreateRelease } from './validation/release';
-import { ReleaseCreateArgs, UserInfo } from '../../../shared/types';
+import type { CreateRelease, Release } from '../../../shared/contracts/release';
+import type { UserInfo } from '../../../shared/types';
 import { getService } from '../utils';
+
+type ReleaseWithPopulatedActions = Release & { actions: { count: number } };
 
 const releaseController = {
   async findMany(ctx: Koa.Context) {
@@ -14,11 +18,28 @@ const releaseController = {
     await permissionsManager.validateQuery(ctx.query);
     const query = await permissionsManager.sanitizeQuery(ctx.query);
 
-    ctx.body = await getService('release', { strapi }).findMany(query);
+    const { results, pagination } = await getService('release', { strapi }).findMany(query);
+
+    // Format the data object
+    const data = results.map((release: ReleaseWithPopulatedActions) => {
+      // TODO: Not sure how else to type this otherwise the actions is always unknown
+      const { actions, ...releaseData } = release;
+
+      return {
+        ...releaseData,
+        actions: {
+          meta: {
+            count: actions.count,
+          },
+        },
+      };
+    });
+
+    ctx.body = { data, pagination };
   },
 
   async findOne(ctx: Koa.Context) {
-    const id: number | string = ctx.params.id;
+    const id: Release['id'] = ctx.params.id;
 
     const permissionsManager = strapi.admin.services.permission.createPermissionsManager({
       ability: ctx.state.userAbility,
@@ -28,12 +49,33 @@ const releaseController = {
     await permissionsManager.validateQuery(ctx.query);
     const query = await permissionsManager.sanitizeQuery(ctx.query);
 
-    ctx.body = await getService('release', { strapi }).findOne(Number(id), query);
+    const result = (await getService('release', { strapi }).findOne(
+      Number(id),
+      query
+    )) as ReleaseWithPopulatedActions | null;
+
+    if (!result) {
+      throw new errors.NotFoundError(`Release not found for id: ${id}`);
+    }
+
+    const { actions, ...release } = result;
+
+    // Format the data object
+    const data = {
+      ...release,
+      actions: {
+        meta: {
+          count: actions.count,
+        },
+      },
+    };
+
+    ctx.body = { data };
   },
 
   async create(ctx: Koa.Context) {
     const user: UserInfo = ctx.state.user;
-    const releaseArgs: ReleaseCreateArgs = ctx.request.body;
+    const releaseArgs: CreateRelease.Request['body'] = ctx.request.body;
 
     await validateCreateRelease(releaseArgs);
 

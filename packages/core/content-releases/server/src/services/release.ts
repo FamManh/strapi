@@ -1,21 +1,26 @@
 import { setCreatorFields } from '@strapi/utils';
 import type { LoadedStrapi } from '@strapi/types';
 import { RELEASE_ACTION_MODEL_UID, RELEASE_MODEL_UID } from '../constants';
-import type { ReleaseCreateArgs, UserInfo, ReleaseActionCreateArgs } from '../../../shared/types';
+import type {
+  Release,
+  GetRelease,
+  GetReleases,
+  CreateRelease,
+} from '../../../shared/contracts/release';
+import type { CreateReleaseAction } from '../../../shared/contracts/release-action';
+import type { UserInfo } from '../../../shared/types';
 import { getService } from '../utils';
 
 const createReleaseService = ({ strapi }: { strapi: LoadedStrapi }) => ({
-  async create(releaseData: ReleaseCreateArgs, { user }: { user: UserInfo }) {
+  async create(releaseData: CreateRelease.Request['body'], { user }: { user: UserInfo }) {
     const releaseWithCreatorFields = await setCreatorFields({ user })(releaseData);
 
-    const release = await strapi.entityService.create(RELEASE_MODEL_UID, {
+    return strapi.entityService.create(RELEASE_MODEL_UID, {
       data: releaseWithCreatorFields,
     });
-
-    return release;
   },
-  async findMany(query?: Record<string, unknown>) {
-    const { results, pagination } = await strapi.entityService.findPage(RELEASE_MODEL_UID, {
+  findMany(query?: GetReleases.Request['query']) {
+    return strapi.entityService.findPage(RELEASE_MODEL_UID, {
       // Default query
       populate: {
         actions: {
@@ -26,14 +31,9 @@ const createReleaseService = ({ strapi }: { strapi: LoadedStrapi }) => ({
       // Query request, overrides default
       ...query,
     });
-
-    return {
-      data: results,
-      pagination,
-    };
   },
-  async findOne(id: number, query?: Record<string, unknown>) {
-    const release = await strapi.entityService.findOne(RELEASE_MODEL_UID, id, {
+  findOne(id: Release['id'], query?: GetRelease.Request['query']) {
+    return strapi.entityService.findOne(RELEASE_MODEL_UID, id, {
       // Default query
       populate: {
         actions: {
@@ -44,14 +44,10 @@ const createReleaseService = ({ strapi }: { strapi: LoadedStrapi }) => ({
       // Query request, overrides default
       ...query,
     });
-
-    return {
-      data: release,
-    };
   },
   async createAction(
-    releaseId: ReleaseActionCreateArgs['releaseId'],
-    action: Pick<ReleaseActionCreateArgs, 'type' | 'entry'>
+    releaseId: Release['id'],
+    action: Pick<CreateReleaseAction.Request['body'], 'type' | 'entry'>
   ) {
     const { validateEntryContentType, validateUniqueEntry } = getService('release-validation', {
       strapi,
