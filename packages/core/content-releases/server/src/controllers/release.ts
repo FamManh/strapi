@@ -41,17 +41,8 @@ const releaseController = {
   async findOne(ctx: Koa.Context) {
     const id: Release['id'] = ctx.params.id;
 
-    const permissionsManager = strapi.admin.services.permission.createPermissionsManager({
-      ability: ctx.state.userAbility,
-      model: RELEASE_MODEL_UID,
-    });
-
-    await permissionsManager.validateQuery(ctx.query);
-    const query = await permissionsManager.sanitizeQuery(ctx.query);
-
     const result = (await getService('release', { strapi }).findOne(
-      Number(id),
-      query
+      Number(id)
     )) as ReleaseWithPopulatedActions | null;
 
     if (!result) {

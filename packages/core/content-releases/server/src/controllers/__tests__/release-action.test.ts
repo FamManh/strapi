@@ -48,10 +48,12 @@ describe('Release Action controller', () => {
         state: {
           user: {},
         },
+        params: {
+          id: 1,
+        },
         request: {
           // Mock missing type property
           body: {
-            releaseId: 1,
             entry: {
               id: 1,
               contentType: 'api::category.category',

@@ -1,14 +1,11 @@
-import type { Entity } from '@strapi/types';
+import type { Entity } from '../types';
 import type { ReleaseAction } from './release-action';
 import type { UserInfo } from '../types';
 import { errors } from '@strapi/utils';
 
-export interface Release {
-  id: Entity.ID;
+export interface Release extends Entity {
   name: string;
-  createdAt: string;
-  updatedAt: string;
-  releasedAt: Date;
+  releasedAt: string;
   actions: ReleaseAction[];
 }
 
@@ -31,18 +28,18 @@ export declare namespace GetReleases {
     state: {
       userAbility: {};
     };
-    query?: {
-      [key: string]: unknown;
-      page?: number;
-      pageSize?: number;
-    };
+    query?: Partial<Pick<Pagination, 'page' | 'pageSize'>>;
   }
 
-  export interface Response {
-    data: ReleaseDataResponse[] | null;
-    pagination: Pagination;
-    error?: errors.ApplicationError;
-  }
+  export type Response =
+    | {
+        data: ReleaseDataResponse[];
+        pagination: Pagination;
+      }
+    | {
+        data: null;
+        error: errors.ApplicationError;
+      };
 }
 
 /**
@@ -53,17 +50,19 @@ export declare namespace GetRelease {
     state: {
       userAbility: {};
     };
-    body: {};
     params: {
-      id: Entity.ID;
+      id: Release['id'];
     };
-    query?: Record<string, unknown>;
   }
 
-  export interface Response {
-    data: ReleaseDataResponse | null;
-    error?: errors.NotFoundError;
-  }
+  export type Response =
+    | {
+        data: ReleaseDataResponse;
+      }
+    | {
+        data: null;
+        error: errors.ApplicationError | errors.NotFoundError;
+      };
 }
 
 /**
@@ -79,8 +78,12 @@ export declare namespace CreateRelease {
     };
   }
 
-  export interface Response {
-    data: ReleaseDataResponse;
-    error?: errors.ApplicationError | errors.ValidationError;
-  }
+  export type Response =
+    | {
+        data: ReleaseDataResponse;
+      }
+    | {
+        data: null;
+        error: errors.ApplicationError | errors.ValidationError;
+      };
 }

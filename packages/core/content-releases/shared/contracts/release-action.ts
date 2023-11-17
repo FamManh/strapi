@@ -1,9 +1,10 @@
-import type { Entity, Common } from '@strapi/types';
+import type { Common } from '@strapi/types';
 import type { Release } from './release';
+import type { Entity } from '../types';
 import type { errors } from '@strapi/utils';
 
-interface ReleaseActionEntry {
-  id: Entity.ID;
+interface ReleaseActionEntry extends Entity {
+  // Entity attributes
   [key: string]: unknown;
 }
 
@@ -19,11 +20,13 @@ export interface ReleaseAction {
  */
 export declare namespace CreateReleaseAction {
   export interface Request {
+    params: {
+      id: Release['id'];
+    };
     body: {
-      releaseId: Entity.ID;
       type: ReleaseAction['type'];
       entry: {
-        id: Entity.ID;
+        id: ReleaseActionEntry['id'];
         contentType: Common.UID.ContentType;
       };
     };

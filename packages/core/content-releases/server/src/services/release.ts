@@ -1,12 +1,7 @@
 import { setCreatorFields } from '@strapi/utils';
 import type { LoadedStrapi } from '@strapi/types';
 import { RELEASE_ACTION_MODEL_UID, RELEASE_MODEL_UID } from '../constants';
-import type {
-  Release,
-  GetRelease,
-  GetReleases,
-  CreateRelease,
-} from '../../../shared/contracts/release';
+import type { Release, GetReleases, CreateRelease } from '../../../shared/contracts/release';
 import type { CreateReleaseAction } from '../../../shared/contracts/release-action';
 import type { UserInfo } from '../../../shared/types';
 import { getService } from '../utils';
@@ -32,7 +27,7 @@ const createReleaseService = ({ strapi }: { strapi: LoadedStrapi }) => ({
       ...query,
     });
   },
-  findOne(id: Release['id'], query?: GetRelease.Request['query']) {
+  findOne(id: Release['id']) {
     return strapi.entityService.findOne(RELEASE_MODEL_UID, id, {
       // Default query
       populate: {
@@ -41,12 +36,10 @@ const createReleaseService = ({ strapi }: { strapi: LoadedStrapi }) => ({
           count: true,
         },
       },
-      // Query request, overrides default
-      ...query,
     });
   },
   async createAction(
-    releaseId: Release['id'],
+    id: Release['id'],
     action: Pick<CreateReleaseAction.Request['body'], 'type' | 'entry'>
   ) {
     const { validateEntryContentType, validateUniqueEntry } = getService('release-validation', {
@@ -54,8 +47,8 @@ const createReleaseService = ({ strapi }: { strapi: LoadedStrapi }) => ({
     });
 
     await Promise.all([
-      validateEntryContentType({ releaseId, ...action }),
-      validateUniqueEntry({ releaseId, ...action }),
+      validateEntryContentType(action.entry.contentType),
+      validateUniqueEntry(id, action),
     ]);
 
     const { entry, type } = action;
@@ -69,7 +62,7 @@ const createReleaseService = ({ strapi }: { strapi: LoadedStrapi }) => ({
           __type: entry.contentType,
           __pivot: { field: 'entry' },
         },
-        release: releaseId,
+        release: id,
       },
       populate: { release: { fields: ['id'] }, entry: { fields: ['id'] } },
     });
