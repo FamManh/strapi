@@ -43,16 +43,16 @@ const useMenu = () => {
         // @ts-expect-error - we need the permissions type from the plugin
         permissions: permissions.marketplace.main,
       },
-      {
-        icon: ShoppingCart,
-        intlLabel: {
-          id: 'global.marketplace',
-          defaultMessage: 'Marketplace',
-        },
-        to: '/marketplace',
-        // @ts-expect-error - we need the permissions type from the plugin
-        permissions: permissions.marketplace.main,
-      },
+      // {
+      //   icon: ShoppingCart,
+      //   intlLabel: {
+      //     id: 'global.marketplace',
+      //     defaultMessage: 'Marketplace',
+      //   },
+      //   to: '/marketplace',
+      //   // @ts-expect-error - we need the permissions type from the plugin
+      //   permissions: permissions.marketplace.main,
+      // },
       {
         icon: Cog,
         intlLabel: {

@@ -674,8 +674,8 @@ export const server = setupServer(
      * NPS SURVEY
      *
      */
-    rest.post('https://analytics.strapi.io/submit-nps', (req, res, ctx) => {
-      return res(ctx.status(200));
-    }),
+    // rest.post('https://analytics.strapi.io/submit-nps', (req, res, ctx) => {
+    //   return res(ctx.status(200));
+    // }),
   ]
 );

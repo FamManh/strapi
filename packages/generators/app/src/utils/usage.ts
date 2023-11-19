@@ -85,18 +85,19 @@ function trackEvent(event: string, payload: Record<string, unknown>) {
   }
 
   try {
-    return fetch('https://analytics.strapi.io/api/v2/track', {
-      method: 'POST',
-      body: JSON.stringify({
-        event,
-        ...payload,
-      }),
-      timeout: 1000,
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Strapi-Event': event,
-      },
-    }).catch(() => {});
+    // return fetch('https://analytics.strapi.io/api/v2/track', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     event,
+    //     ...payload,
+    //   }),
+    //   timeout: 1000,
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'X-Strapi-Event': event,
+    //   },
+    // }).catch(() => {});
+    return Promise.resolve();
   } catch (err) {
     /** ignore errors */
     return Promise.resolve();

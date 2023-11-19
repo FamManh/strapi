@@ -135,7 +135,7 @@ export const App = () => {
 
           try {
             const event = 'didInitializeAdministration';
-            await post(
+            /*await post(
               'https://analytics.strapi.io/api/v2/track',
               {
                 // This event is anonymous
@@ -151,7 +151,7 @@ export const App = () => {
                   'X-Strapi-Event': event,
                 },
               }
-            );
+            );*/
           } catch (e) {
             // Silent.
           }

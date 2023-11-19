@@ -84,9 +84,9 @@ const HomePageCE = () => {
         })}
       />
       <Main>
-        <LogoContainer>
-          <img alt="" aria-hidden src={cornerOrnamentPath} />
-        </LogoContainer>
+          {/* <LogoContainer>
+            <img alt="" aria-hidden src={cornerOrnamentPath} />
+          </LogoContainer> */}
         <Box padding={10}>
           <Grid>
             <GridItem col={8} s={12}>
@@ -104,7 +104,7 @@ const HomePageCE = () => {
                             defaultMessage: 'Welcome on board!',
                           })}
                     </Typography>
-                    <WordWrap textColor="neutral600" variant="epsilon">
+                    {/* <WordWrap textColor="neutral600" variant="epsilon">
                       {hasAlreadyCreatedContentTypes
                         ? formatMessage({
                             id: 'app.components.HomePage.welcomeBlock.content.again',
@@ -116,7 +116,7 @@ const HomePageCE = () => {
                             defaultMessage:
                               'Congrats! You are logged as the first administrator. To discover the powerful features provided by Strapi, we recommend you to create your first Content type!',
                           })}
-                    </WordWrap>
+                    </WordWrap> */}
                     {hasAlreadyCreatedContentTypes ? (
                       <Link isExternal href="https://strapi.io/blog">
                         {formatMessage({
@@ -137,14 +137,14 @@ const HomePageCE = () => {
               </div>
             </GridItem>
           </Grid>
-          <Grid gap={6}>
+          {/* <Grid gap={6}>
             <GridItem col={8} s={12}>
               {showGuidedTour ? <GuidedTourHomepage /> : <ContentBlocks />}
             </GridItem>
             <GridItem col={4} s={12}>
               <SocialLinks />
             </GridItem>
-          </Grid>
+          </Grid> */}
         </Box>
       </Main>
     </Layout>
@@ -516,18 +516,18 @@ const SOCIAL_LINKS = [
  * -----------------------------------------------------------------------------------------------*/
 
 const HomePage = () => {
-  const Page = useEnterprise(
-    HomePageCE,
-    // eslint-disable-next-line import/no-cycle
-    async () => (await import('../../../ee/admin/src/pages/HomePage')).HomePageEE
-  );
+  // const Page = useEnterprise(
+  //   HomePageCE,
+  //   // eslint-disable-next-line import/no-cycle
+  //   async () => (await import('../../../ee/admin/src/pages/HomePage')).HomePageEE
+  // );
 
   // block rendering until the EE component is fully loaded
-  if (!Page) {
-    return null;
-  }
+  // if (!Page) {
+  //   return null;
+  // }
 
-  return <Page />;
+  return <HomePageCE />;
 };
 
 export { HomePage, HomePageCE };

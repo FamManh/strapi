@@ -296,31 +296,31 @@ const useTracking = (): UseTrackingReturn => {
       properties?: TEvent['properties']
     ) => {
       try {
-        if (uuid && !window.strapi.telemetryDisabled) {
-          const res = await axios.post<string>(
-            'https://analytics.strapi.io/api/v2/track',
-            {
-              event,
-              userId,
-              deviceId,
-              eventProperties: { ...properties },
-              userProperties: {},
-              groupProperties: {
-                ...telemetryProperties,
-                projectId: uuid,
-                projectType: window.strapi.projectType,
-              },
-            },
-            {
-              headers: {
-                'Content-Type': 'application/json',
-                'X-Strapi-Event': event,
-              },
-            }
-          );
+      //   if (uuid && !window.strapi.telemetryDisabled) {
+      //     const res = await axios.post<string>(
+      //       'https://analytics.strapi.io/api/v2/track',
+      //       {
+      //         event,
+      //         userId,
+      //         deviceId,
+      //         eventProperties: { ...properties },
+      //         userProperties: {},
+      //         groupProperties: {
+      //           ...telemetryProperties,
+      //           projectId: uuid,
+      //           projectType: window.strapi.projectType,
+      //         },
+      //       },
+      //       {
+      //         headers: {
+      //           'Content-Type': 'application/json',
+      //           'X-Strapi-Event': event,
+      //         },
+      //       }
+      //     );
 
-          return res;
-        }
+      //     return res;
+      //   }
       } catch (err) {
         // Silence is golden
       }

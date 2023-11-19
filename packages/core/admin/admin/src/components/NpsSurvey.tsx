@@ -147,19 +147,20 @@ const NpsSurvey = () => {
 
   const { mutate, isLoading } = useMutation<unknown, unknown, NpsSurveyMutationBody>(
     async (form) => {
-      const res = await fetch('https://analytics.strapi.io/submit-nps', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(form),
-      });
+      // const res = await fetch('', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   body: JSON.stringify(form),
+      // });
 
-      if (!res.ok) {
-        throw new Error('Failed to submit NPS survey');
-      }
+      // if (!res.ok) {
+      //   throw new Error('Failed to submit NPS survey');
+      // }
 
-      return res;
+      // return res;
+      return true
     },
     {
       onSuccess() {
@@ -218,14 +219,14 @@ const NpsSurvey = () => {
     npsSurveyFeedback: NpsSurveyMutationBody['comment'];
   }) => {
     const userInfo = auth.getUserInfo();
-    mutate({
-      email: typeof userInfo === 'object' && userInfo !== null ? userInfo.email : '',
-      rating: npsSurveyRating,
-      comment: npsSurveyFeedback,
-      environment: currentEnvironment,
-      version: strapiVersion ?? undefined,
-      license: window.strapi.projectType,
-    });
+    // mutate({
+    //   email: typeof userInfo === 'object' && userInfo !== null ? userInfo.email : '',
+    //   rating: npsSurveyRating,
+    //   comment: npsSurveyFeedback,
+    //   environment: currentEnvironment,
+    //   version: strapiVersion ?? undefined,
+    //   license: window.strapi.projectType,
+    // });
   };
 
   const handleDismiss = () => {
@@ -253,7 +254,7 @@ const NpsSurvey = () => {
     <Portal>
       <Formik
         initialValues={{ npsSurveyFeedback: '', npsSurveyRating: null }}
-        onSubmit={handleSubmitResponse}
+        onSubmit={() => {}}
         validationSchema={yup.object({
           npsSurveyFeedback: yup.string(),
           npsSurveyRating: yup.number().required(),
@@ -366,7 +367,7 @@ const NpsSurvey = () => {
                           {values.npsSurveyFeedback}
                         </Textarea>
                       </Box>
-                      <Button marginBottom={2} type="submit" loading={isLoading}>
+                      <Button marginBottom={2} type="submit" loading={false}>
                         {formatMessage({
                           id: 'app.components.NpsSurvey.submit-feedback',
                           defaultMessage: 'Submit Feedback',

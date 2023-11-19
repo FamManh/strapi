@@ -84,24 +84,24 @@ export const UseCasePage = () => {
   const handleSubmit = async (event: React.FormEvent, skipPersona: boolean) => {
     event.preventDefault();
     try {
-      await post('https://analytics.strapi.io/register', {
-        email,
-        username: firstname,
-        firstAdmin: Boolean(!hasAdmin),
-        persona: {
-          role: skipPersona ? undefined : role,
-          otherRole: skipPersona ? undefined : otherRole,
-        },
-      });
+      // await post('https://analytics.strapi.io/register', {
+      //   email,
+      //   username: firstname,
+      //   firstAdmin: Boolean(!hasAdmin),
+      //   persona: {
+      //     role: skipPersona ? undefined : role,
+      //     otherRole: skipPersona ? undefined : otherRole,
+      //   },
+      // });
 
-      toggleNotification({
-        type: 'success',
-        message: {
-          id: 'Usecase.notification.success.project-created',
-          defaultMessage: 'Project has been successfully created',
-        },
-      });
-      push('/');
+      // toggleNotification({
+      //   type: 'success',
+      //   message: {
+      //     id: 'Usecase.notification.success.project-created',
+      //     defaultMessage: 'Project has been successfully created',
+      //   },
+      // });
+      // push('/');
     } catch (err) {
       // Silent
     }
