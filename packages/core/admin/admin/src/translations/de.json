@@ -288,7 +288,7 @@
   "app.components.LeftMenu.collapse": "Navigationsleiste einklappen",
   "app.components.LeftMenu.expand": "Navigationsleiste ausklappen",
   "app.components.LeftMenu.logout": "Abmelden",
-  "app.components.LeftMenu.navbrand.title": "Strapi Dashboard",
+  "app.components.LeftMenu.navbrand.title": "Dashboard",
   "app.components.LeftMenu.navbrand.workplace": "Arbeitsplatz",
   "app.components.LeftMenuFooter.help": "Hilfe",
   "app.components.LeftMenuFooter.poweredBy": "Powered by ",

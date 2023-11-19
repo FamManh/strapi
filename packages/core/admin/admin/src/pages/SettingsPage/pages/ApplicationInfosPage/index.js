@@ -188,7 +188,7 @@ const ApplicationInfosPage = () => {
             />
             <ContentLayout>
               <Flex direction="column" alignItems="stretch" gap={6}>
-                <Flex
+                {/* <Flex
                   direction="column"
                   alignItems="stretch"
                   gap={4}
@@ -273,7 +273,7 @@ const ApplicationInfosPage = () => {
                     </GridItem>
                     <AdminSeatInfo />
                   </Grid>
-                </Flex>
+                </Flex> */}
                 {canRead && data && (
                   <CustomizationInfos
                     canUpdate={canUpdate}

@@ -101,7 +101,7 @@ const Login = ({ children }: LoginProps) => {
               <Typography variant="epsilon" textColor="neutral600">
                 {formatMessage({
                   id: 'Auth.form.welcome.subtitle',
-                  defaultMessage: 'Log in to your Strapi account',
+                  defaultMessage: 'Log in to your Viconsol account',
                 })}
               </Typography>
             </Box>

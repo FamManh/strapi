@@ -117,7 +117,7 @@ const HomePageCE = () => {
                               'Congrats! You are logged as the first administrator. To discover the powerful features provided by Strapi, we recommend you to create your first Content type!',
                           })}
                     </WordWrap> */}
-                    {hasAlreadyCreatedContentTypes ? (
+                    {/* {hasAlreadyCreatedContentTypes ? (
                       <Link isExternal href="https://strapi.io/blog">
                         {formatMessage({
                           id: 'app.components.HomePage.button.blog',
@@ -131,7 +131,7 @@ const HomePageCE = () => {
                           defaultMessage: 'Create your first Content type',
                         })}
                       </Button>
-                    )}
+                    )} */}
                   </Flex>
                 </Box>
               </div>

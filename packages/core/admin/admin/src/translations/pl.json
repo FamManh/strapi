@@ -292,7 +292,7 @@
   "app.components.LeftMenu.collapse": "Zwiń nawigację",
   "app.components.LeftMenu.expand": "Rozszerz nawigację",
   "app.components.LeftMenu.logout": "Wyloguj",
-  "app.components.LeftMenu.navbrand.title": "Strapi Dashboard",
+  "app.components.LeftMenu.navbrand.title": "Dashboard",
   "app.components.LeftMenu.navbrand.workplace": "Workplace",
   "app.components.LeftMenuFooter.help": "Wsparcie",
   "app.components.LeftMenuFooter.poweredBy": "Obsługiwane przez ",

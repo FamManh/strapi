@@ -367,7 +367,7 @@
   "app.components.LeftMenu.logout": "Logga ut",
   "app.components.LeftMenu.logo.alt": "Applikationslogga",
   "app.components.LeftMenu.plugins": "Plugins",
-  "app.components.LeftMenu.navbrand.title": "Strapi Dashboard",
+  "app.components.LeftMenu.navbrand.title": "Dashboard",
   "app.components.LeftMenu.navbrand.workplace": "Arbetsplats",
   "app.components.LeftMenuFooter.help": "Hjälp",
   "app.components.LeftMenuFooter.poweredBy": "Drivs av ",

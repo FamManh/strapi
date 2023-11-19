@@ -103,17 +103,14 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
 
   const menuTitle = formatMessage({
     id: 'app.components.LeftMenu.navbrand.title',
-    defaultMessage: 'Strapi Dashboard',
+    defaultMessage: 'Dashboard',
   });
 
   return (
     <MainNav condensed={condensed}>
       <NavBrand
         as={RouterNavLink}
-        workplace={formatMessage({
-          id: 'app.components.LeftMenu.navbrand.workplace',
-          defaultMessage: 'Workplace',
-        })}
+        workplace={''}
         title={menuTitle}
         icon={
           <img
@@ -125,7 +122,6 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
           />
         }
       />
-
       <Divider />
 
       <NavSections>

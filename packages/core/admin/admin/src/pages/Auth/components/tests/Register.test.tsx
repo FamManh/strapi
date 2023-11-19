@@ -10,10 +10,10 @@ describe('Register', () => {
       initialEntries: ['/auth/register'],
     });
 
-    expect(getByRole('heading', { name: 'Welcome to Strapi!' })).toBeInTheDocument();
+    expect(getByRole('heading', { name: 'Welcome to Viconsol!' })).toBeInTheDocument();
     expect(
       getByText(
-        'Credentials are only used to authenticate in Strapi. All saved data will be stored in your database.'
+        'Credentials are only used to authenticate in Viconsol. All saved data will be stored in your database.'
       )
     ).toBeInTheDocument();
 

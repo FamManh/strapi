@@ -41,7 +41,7 @@ const Onboarding = () => {
 
   return (
     <Box as="aside" position="fixed" bottom={2} right={2}>
-      <HelperButton
+      {/* <HelperButton
         aria-label={formatMessage(
           isOpen
             ? {
@@ -57,9 +57,9 @@ const Onboarding = () => {
         ref={triggerRef}
       >
         <Icon as={isOpen ? Cross : Question} color="buttonNeutral0" />
-      </HelperButton>
+      </HelperButton> */}
 
-      {isOpen && (
+      {/* {isOpen && (
         <Portal>
           <PopoverPrimitives.Content
             padding={0}
@@ -161,7 +161,7 @@ const Onboarding = () => {
             </Flex>
           </PopoverPrimitives.Content>
         </Portal>
-      )}
+      )} */}
     </Box>
   );
 };
