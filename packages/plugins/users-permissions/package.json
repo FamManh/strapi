@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/plugin-users-permissions",
+  "name": "@viconsol/plugin-users-permissions",
   "version": "4.15.4",
   "description": "Protect your API with a full-authentication process based on JWT",
   "repository": {
@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@strapi/design-system": "1.13.1",
-    "@strapi/helper-plugin": "4.15.4",
+    "@strapi/helper-plugin": "npm:@viconsol/helper-plugin@4.15.4",
     "@strapi/icons": "1.13.0",
     "@strapi/utils": "4.15.4",
     "bcryptjs": "2.4.3",

@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/helper-plugin",
+  "name": "@viconsol/helper-plugin",
   "version": "4.15.4",
   "description": "Helper for Strapi plugins development",
   "repository": {

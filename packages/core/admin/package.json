@@ -1,5 +1,5 @@
 {
-  "name": "@strapi/admin",
+  "name": "@viconsol/admin",
   "version": "4.15.4",
   "description": "Strapi Admin",
   "repository": {
@@ -77,7 +77,7 @@
     "@reduxjs/toolkit": "1.9.7",
     "@strapi/data-transfer": "4.15.4",
     "@strapi/design-system": "1.13.1",
-    "@strapi/helper-plugin": "4.15.4",
+    "@strapi/helper-plugin": "npm:@viconsol/helper-plugin@4.15.4",
     "@strapi/icons": "1.13.0",
     "@strapi/permissions": "4.15.4",
     "@strapi/provider-audit-logs-local": "4.15.4",

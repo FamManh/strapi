@@ -17,7 +17,7 @@ import { useConfiguration } from '../contexts/configuration';
 import { getFullName } from '../utils/getFullName';
 import { hashAdminUserEmail } from '../utils/hashAdminUserEmail';
 
-import { NpsSurvey } from './NpsSurvey';
+// import { NpsSurvey } from './NpsSurvey';
 import { PluginsInitializer } from './PluginsInitializer';
 import { RBACProvider } from './RBACProvider';
 
@@ -152,7 +152,7 @@ const AuthenticatedApp = () => {
       userDisplayName={userDisplayName}
     >
       <RBACProvider permissions={permissions ?? []} refetchPermissions={refetch}>
-        <NpsSurvey />
+        {/* <NpsSurvey /> */}
         <PluginsInitializer />
       </RBACProvider>
     </AppInfoProvider>
