@@ -1,6 +1,6 @@
 {
   "name": "@viconsol/cms",
-  "version": "4.15.4",
+  "version": "4.15.5",
   "description": "An open source headless CMS solution to create and manage your own API. It provides a powerful dashboard and features to make your life easier. Databases supported: MySQL, MariaDB, PostgreSQL, SQLite",
   "keywords": [
     "strapi",
@@ -114,7 +114,7 @@
   "dependencies": {
     "@koa/cors": "3.4.3",
     "@koa/router": "10.1.1",
-    "@strapi/admin": "npm:@viconsol/admin@4.15.4",
+    "@strapi/admin": "npm:@viconsol/admin@4.15.5",
     "@strapi/data-transfer": "4.15.4",
     "@strapi/database": "4.15.4",
     "@strapi/generate-new": "4.15.4",
