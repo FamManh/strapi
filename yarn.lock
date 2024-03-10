@@ -8746,7 +8746,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/admin@npm:@viconsol/admin@4.15.4, @viconsol/admin@workspace:packages/core/admin":
+"@strapi/admin@npm:@viconsol/admin@4.15.5, @viconsol/admin@workspace:packages/core/admin":
   version: 0.0.0-use.local
   resolution: "@viconsol/admin@workspace:packages/core/admin"
   dependencies:
@@ -8758,7 +8758,7 @@ __metadata:
     "@strapi/admin-test-utils": "npm:4.15.4"
     "@strapi/data-transfer": "npm:4.15.4"
     "@strapi/design-system": "npm:1.13.1"
-    "@strapi/helper-plugin": "npm:@viconsol/helper-plugin@4.15.4"
+    "@strapi/helper-plugin": "npm:@viconsol/helper-plugin@4.15.5"
     "@strapi/icons": "npm:1.13.0"
     "@strapi/pack-up": "npm:4.15.4"
     "@strapi/permissions": "npm:4.15.4"
@@ -9057,7 +9057,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@strapi/helper-plugin@npm:@viconsol/helper-plugin@4.15.4, @viconsol/helper-plugin@workspace:packages/core/helper-plugin":
+"@strapi/helper-plugin@npm:@viconsol/helper-plugin@4.15.5, @viconsol/helper-plugin@workspace:packages/core/helper-plugin":
   version: 0.0.0-use.local
   resolution: "@viconsol/helper-plugin@workspace:packages/core/helper-plugin"
   dependencies:
@@ -11742,7 +11742,7 @@ __metadata:
   dependencies:
     "@koa/cors": "npm:3.4.3"
     "@koa/router": "npm:10.1.1"
-    "@strapi/admin": "npm:@viconsol/admin@4.15.4"
+    "@strapi/admin": "npm:@viconsol/admin@4.15.5"
     "@strapi/data-transfer": "npm:4.15.4"
     "@strapi/database": "npm:4.15.4"
     "@strapi/generate-new": "npm:4.15.4"
@@ -11826,7 +11826,7 @@ __metadata:
   resolution: "@viconsol/plugin-users-permissions@workspace:packages/plugins/users-permissions"
   dependencies:
     "@strapi/design-system": "npm:1.13.1"
-    "@strapi/helper-plugin": "npm:@viconsol/helper-plugin@4.15.4"
+    "@strapi/helper-plugin": "npm:@viconsol/helper-plugin@4.15.5"
     "@strapi/icons": "npm:1.13.0"
     "@strapi/pack-up": "npm:4.15.4"
     "@strapi/strapi": "npm:4.15.4"
